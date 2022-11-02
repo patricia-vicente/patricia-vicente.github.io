@@ -1,0 +1,11 @@
+/* Add your custom CSS here */
+body { font-family: 'Outfit', sans-serif; }
+
+.section-selector-1 { background-color: var(--trend-700) }
+.section-selector-1 .badge { background-color: var(--trend-700) }
+.section-selector-1 .badge { color: var(--white-000) }
+
+.section-selector-2 { background-color: var(--trend-900) }
+
+.section-selector-1 h2, .section-selector-2 h2 { font-weight: 400;}
+
