@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Patricia Vicente | Web Design Portfolio</title>
+    <title>Patricia Vicente | Development Services | JavaScript Random Colour Generator Project</title>
     <meta name="description" content="Uses an array of hexadecimal values to randomly generate a background colour for the web page.">
 
 	<!-- Stylesheets -->
@@ -93,7 +93,7 @@
     <!-- navigation menu -->
 
     <nav class="container-menu menu-desktop menu-sticky">
-        <a href="#"><img src="../assets/img/website-logo-sample.png" alt="website logo"></a>
+        <a href="#"><img src="../assets/img/logopatriciadev2.png" alt="website logo"></a>
         <ul class="">
             <li><a href="../../../index.html">Home</a></li>
             <li><a href="../../index.html">Portfolio</a></li>
@@ -130,24 +130,7 @@
     </main>
 
     <script>
-        const arrHex = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "A", "B", "C", "D", "E", "F"];
-        const btnColor = document.querySelector("#btn-color");
-        const strColorDisplay = document.querySelector("#color-display");
 
-    // Patricia Vicente, javascript project
-btnColor.addEventListener("click", function () {
-let strHexColor = "#";
-for (let i = 0; i < 6; i++) {
-    strHexColor = strHexColor + arrHex[getRandomNumber()];
-}
-strColorDisplay.textContent = strHexColor;
-document.querySelector(".theme-js").style.backgroundColor = strHexColor;
-});
-
-        // Generate number in range 0 - 15
-        function getRandomNumber() {
-        return Math.floor(Math.random() * arrHex.length);
-        }
     </script>
 
 
@@ -165,8 +148,8 @@ document.querySelector(".theme-js").style.backgroundColor = strHexColor;
 		</ul>
 
 		<ul class="footer-icons">
-			<li><a href="https://www.linkedin.com/nnnnnnnnnnn" target="_blank"><i class="fab fa-linkedin"></i></a></li>
-			<li><a href="https://github.com/nnnnnnnnnn" target="_blank"><i class="fab fa-github-square"></i></a></li>
+			<li><a href="https://www.linkedin.com/in/patricia-vicente-02259040/" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+			<li><a href="https://github.com/patricia-vicente" target="_blank"><i class="fab fa-github-square"></i></a></li>
 		</ul>
 
 		<p class="index.html"> <a href="../../../privacy.html" style="color: #fff; background-color:transparent;">Privacy &amp; Legal</a> </p>
@@ -174,10 +157,27 @@ document.querySelector(".theme-js").style.backgroundColor = strHexColor;
     </footer>
 
     <script src="../../../assets/js/menu.js">
-        
     </script>
 
+    <script> const arrHex = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "A", "B", "C", "D", "E", "F"];
+    const btnColor = document.querySelector("#btn-color");
+    const strColorDisplay = document.querySelector("#color-display");
+
+    // Lilian Moraes, JavaScript Project
+btnColor.addEventListener("click", function () {
+let strHexColor = "#";
+for (let i = 0; i < 6; i++) {
+    strHexColor = strHexColor + arrHex[getRandomNumber()];
+}
+strColorDisplay.textContent = strHexColor;
+document.querySelector(".theme-js").style.backgroundColor = strHexColor;
+});
     
+    // Generate number in range 0 - 15
+       function getRandomNumber() {
+       return Math.floor(Math.random() * arrHex.length);
+    }
+    </script>
 
 
 </body>

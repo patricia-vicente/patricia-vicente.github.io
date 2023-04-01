@@ -1,5 +1,4 @@
 import { calculate } from './perform-calculations.js'
-
 const calculator = {
     displayValue: '0',
     firstOperand: null,
@@ -52,20 +51,6 @@ const calculator = {
   
     calculator.waitingForSecondOperand = true;
     calculator.operator = nextOperator;
-  }
-  
-  function calculate(firstOperand, secondOperand, operator) {
-    if (operator === '+') {
-      return firstOperand + secondOperand;
-    } else if (operator === '-') {
-      return firstOperand - secondOperand;
-    } else if (operator === '*') {
-      return firstOperand * secondOperand;
-    } else if (operator === '/') {
-      return firstOperand / secondOperand;
-    }
-  
-    return secondOperand;
   }
   
   function resetCalculator() {
