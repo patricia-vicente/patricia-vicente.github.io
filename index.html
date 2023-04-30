@@ -4,171 +4,169 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Patricia Vicente | Development Services</title>
-    <meta name="description" content="I create digital experiences to promote
-    products, services and events.">
-    <link rel="apple-touch-icon" sizes="180x180" href="./assets/img/apple-touch-icon.png">    
-    <link rel="icon" type="image/png" sizes="32x32" href="./assets/img//favicon-32x32.png">    
-    <link rel="icon" type="image/png" sizes="16x16" href="./assets/img//favicon-16x16.png">    
-    <link rel="manifest" href="./assets/img/site.webmanifest">
-
-	<!-- Preload large image -->
+    <title>Patricia Vicente | Development Services | JavaScript Dublin Weather Project</title>
+    <meta name="description" content="Uses the Fetch API to retrieve current weather information for the city of Dublin, Ireland. By Patricia Vicente.">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/apple-touch-icon.png">    
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/img//favicon-32x32.png">    
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/img//favicon-16x16.png">    
+    <link rel="manifest" href="../assets/img/site.webmanifest">
 
 	<!-- Stylesheets -->
-    <link rel="stylesheet" href="https://lunevedy.com/assets/2.0/css/lunevedy.min.css" />
-    <link rel="stylesheet" href="./assets/css/custom.css" />
+    <link rel="stylesheet" href="../assets/css/lunadoge.min.css" />
+    <link rel="stylesheet" href="../assets/css/javascript-projects.css" />
 
-	<!-- Google Fonts -->
 
-    <!-- Font Awesome 6 icons. Delete if not using. -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
 
-    <!-- Line Awesome thin icons. Delete if not using. -->
-    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
-    <style> 
-    header.theme-light { background-color: var(--trend-050) }
-    header.theme-light h1, header.theme-light h2 { font-family: 'Playfair Display', serif; }
+        /* ============ Header Colours =============*/
+        header.hero-block-js { background-color: #f7df1e }
+        header.hero-block-js h1 { color: #222 }
+        header.hero-block-js h2 { color: var(--gray-700) }
+
+        /* Main Colours */
+        .theme-js {
+            background-color: #fff;
+            /* background-image: linear-gradient(147deg, #000000 0%, #04619f 74%); */
+            text-align: center;
+            background-image: url('assets/img/dublin-day.jpg');
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .theme-js .box-weather {
+            margin: 0 auto; width: 400px; max-width: 80%;
+            background-image: linear-gradient(rgb(0,0,0,0.5),rgb(0,0,0,0.5));
+            padding: 32px;
+        }
+
+        .theme-js h3 { color: #fff; font-size: 32px; margin-bottom: 32px }
+        .theme-js p { color: #fff; font-weight: bold }
+
+        .theme-js p a { color: #fff !important; font-weight: bold }
+
+        .data-table {
+            border-collapse: collapse;
+            font-size: 18px;
+            width: 100%;
+            overflow: scroll;
+            margin-bottom: 56px;
+            background-color: transparent;
+        }
+
+        .data-table td { padding: 12px 0; color:#fff; text-align: left; }
+
+        .data-table td:first-of-type { padding-left: 0; padding-right: 18px;  }
+
+        .data-table td:first-of-type span { background-color: blue; color:#fff; padding: 4px 12px; border-radius: 5px }
+
+        .data-table td:last-of-type  { padding-left: 18px; padding-right: 0;  }
+
+        .table-lines tr { border-bottom: solid 1px #fff }
+
+        @media(max-width: 768px) {
+            .theme-js .box-weather { max-width: 95%; padding: 20px }
+            .theme-js h3 { font-size: 26px; margin-bottom: 22px; line-height: 1.3 }
+            .theme-js p { font-size: 16px }
+        }
+
+
     </style>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+	<!-- Font Awesome 6.1 icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
-
 
 
 <body>
 
     <!-- navigation menu -->
 
-    <nav class="theme-light" style="background-color: var(--trend-050)">
-        <div class="container-menu menu-desktop">
-            <a href="./index.html" class="brand">
-                <img src="./assets/img/logopatriciadev2.png" alt="Patricia logo">
-            </a>
-
-            <div class="container-menu-links">
-
-                <div class="nav-toggle">
-                    <div class="bar-1"></div>
-                    <div class="bar-2"></div>
-                    <div class="bar-3"></div>
-                </div>
-
-                <ul class="links-wrapper">
-                    <li><a href="./index.html">Home</a></li>
-                    <li><a href="./portfolio/index.html">Portfolio</a></li>
-                    <li><a href="./store/index.html">Store</a></li>
-                    <li><a class="btn btn-solid" id="btn-cta" href="./contact/index.html"><span>Contact</span> <i class="fa-regular fa-envelope"></i></a></li>
-                </ul>
-            </div>
-
+    <nav class="container-menu menu-desktop menu-sticky">
+        <a href="../../index.html"><img src="../assets/img/logopatriciadev2.png" alt="website logo"></a>
+        <ul class="">
+            <li><a href="../../../index.html">Home</a></li>
+            <li><a href="../../../portfolio/index.html">Portfolio</a></li>
+            <li><a href="../../../store/index.html">Store</a></li>
+            <li><a href="../../../contact/index.html" id="btn-cta"><span>Contact</span><i class="fas fa-arrow-right"></i></a></li>
+        </ul>
+        <div class="item-icon">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
         </div>
     </nav>
 
-	<!-- header starts here -->
-
-    <header class="cols-2-half text-center-mobile theme-dark" style="background-color: var(--trend-050)">
-
-        <div class="col-2 col-text">
-            <h1 style="color: black;">Patricia <span class="highlight" style="color: black;">Vicente</span></h1>
-            <h2 style="color: black">Front-end Developer</h2>
-
-        	<div class="container-btn">
-                <a href="./portfolio/index.html" class="btn btn-solid"><i class="fa-regular fa-folder-open"></i><span>View portfolio</span></a>
-                <a href="./contact/index.html" class="btn btn-outline"><i class="fa-regular fa-envelope"></i><span>Contact</span></a>
-            </div>
-
+    <!-- header hero block -->
+    <header class="hero-block hero-block-js">
+        <div class="hero-text-container">
+            <h1>Dublin Weather <span>JavaScript Project</span></h1>
+            <h2>Uses the Fetch API to retrieve current weather information for the city of Dublin, Ireland. View my complete collection of <a href="../index.html">JavaScript projects</a>.</h2>
         </div>
-
-        <div class="col-2 col-visual desktop-bleed-all">
-            <figure>
-                <img src="./assets/img/PatriciaVicente.png" style="object-position: center top;" alt="Placeholder image">
-            </figure>
-        </div>
-
     </header>
-
-
-	<!-- header ends here -->
-
 
     <!-- main content with sections -->
     <main>
 
-        <section class="section-selector-1 theme-light">
+        <section class="container-flex theme-js">
 
-            <div class="col-1 text-center">
-                <h2>Recent projects</h2>
-                <h3>Below you can see some examples of my recent work. Check out my complete portfolio of <a href="./portfolio/index.html">web design </a>and <a href="./portfolio/js/index.html">JavaScript </a>projects. Have a project you would like to discuss? <a href="contact/index.html"> Let's make something great together!</a></h3>
-    
-               </div>
-    
-            <!-- Begin three-column flexbox grid -->
-            <div class="flex-cols-3">
-    
-                <div class="col-3">
-                    <figure class="photos-zoom photos-brightness">
-                        <a href="./portfolio/smothies/index.html"> <img src="./assets/img/project-smoothie.jpg" alt="Fashion project"></a>
-                    </figure>
-                    <h3>Smooth Smoothies</h3>
-                    <p>A multi-column, flexbox-based page layout and hero image with a tinded overlay.</p>
-                    <a href="./portfolio/smothies/index.html" class="btn btn-solid btn-pill"><span>View Project</span><i class="fas fa-arrow-right"></i></a>
-                </div>
-    
-                <div class="col-3">
-                    <figure class="photos-zoom photos-brightness">
-                        <a href="./portfolio/fashion/index.html"> <img src="./assets/img/project-fashion.jpg" alt="Fashion project"></a>
-                    </figure>
-                    <h3>Snazzy Fashion</h3>
-                    <p>A web page for a fashion retailer with a background video that plays in a continuous loop.</p>
-                    <a href="./portfolio/fashion/index.html" class="btn btn-solid btn-pill"><span>View Project</span><i class="fas fa-arrow-right"></i></a>
-                </div>
-    
-                <div class="col-3">
-                    <figure class="photos-zoom photos-brightness">
-                        <a href="./portfolio/project-hero/index.html"> <img src="./assets/img/project-hero.png" alt="Hero-block project"></a>
-                    </figure>
-                    <h3>Hero Block Gallery</h3>
-                    <p>A gallery of hero block elements with split-screen layouts and duotone images.</p>
-                    <a href="./portfolio/project-hero/index.html" class="btn btn-solid btn-pill"><span>View Project</span><i class="fas fa-arrow-right"></i></a>
-                </div>
+            <div class="box-weather">
+                <h3>Weather now in Dublin city, Ireland.</h3>
 
-    
+                <table class="data-table table-lines" id="table-weather-dublin">
+                    <tbody>
+            
+
+                    </tbody>
+                  </table>
+                  <p>Data from <a href="https://openweathermap.org/" target="_blank">Open Weather</a></p>
             </div>
-            <!-- End three-column flexbox grid -->
-    
+
         </section>
+
     </main>
 
-    
- <!-- footer -->
- <footer class="theme-dark text-center-desktop text-center-mobile">
-
-    <h2>Patricia Vicente</h2>
-
-    <h3>Excellence in digital creation</h3>
-
-    <ul class="footer-links">
-        <li><a href="./index.html">Home</a></li>
-        <li><a href="./portfolio/index.html">Portfolio</a></li>
-        <li><a href="./store/index.html">Store</a></li>
-        <li><a href="./contact/index.html">Contact</a></li>
-    </ul>
-
-    <ul class="footer-icons">
-        <li><a href="https://www.linkedin.com/in/patricia-vicente-02259040/" target="_blank"><i class="fab fa-linkedin"></i></a></li>
-        <li><a href="https://github.com/patricia-vicente" target="_blank"><i class="fab fa-github-square"></i></a></li>
-    </ul>
-
-    <p class="privacy"><a href="./privacy.html">Privacy &amp; Legal</a></p>
-
-    <iframe src="https://rcm-eu.amazon-adsystem.com/e/cm?o=2&p=48&l=ur1&category=amazon_business&banner=1VCYTD9FQ2WQDVK6AVG2&f=ifr&linkID=7b2d6495dd9123095aa6d693e5787c0f&t=lilly06b-21&tracking_id=lilly06b-21" width="728" height="90" scrolling="no" border:0 marginwidth="0" style="border:none;" frameborder="0" sandbox="allow-scripts allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+    <script>
 
 
-</footer>
-       
-    <script src="https://lunevedy.netlify.app/assets/js/lunevedy.js"></script>
+    </script>
+
+
+    <!-- footer -->
+	<footer>
+
+		<h2>Patricia Vicente</h2>
+
+		<h3>Excellence in digital creation</h3>
+
+		<ul class="footer-links">
+			<li><a href="../../../index.html">Home</a></li>
+			<li><a href="../../../portfolio/index.html">Portfolio</a></li>
+            <li><a href="../../../store/index.html">Store</a></li>
+			<li><a href="../../../contact/index.html">Contact</a></li>
+		</ul>
+
+		<ul class="footer-icons">
+			<li><a href="https://www.linkedin.com/in/patricia-vicente-02259040/" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+			<li><a href="https://github.com/patricia-vicente" target="_blank"><i class="fab fa-github-square"></i></a></li>
+		</ul>
+
+		<p class="index.html"> <a href="../../../privacy.html" style="color: #fff; background-color:transparent;">Privacy &amp; Legal</a> </p>
+
+    </footer>
+
+    <script src="../assets/js/menu.js"></script>
+
+
+    <script src="app.js"></script>
+
 
 </body>
 </html>
+
+
+
+
+
+
